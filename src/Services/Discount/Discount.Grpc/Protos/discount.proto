@@ -6,7 +6,7 @@ option csharp_namespace = "Discount.Grpc.Protos";
 service DiscountProtoService {
 	rpc GetDiscount(GetDiscountRequest) returns (CouponModel);
 	rpc CreateDiscount(CreateDiscountRequest) returns (CouponModel);
-	rpc UpdateDisount(UpdateDisountRequest) returns (CouponModel);
+	rpc UpdateDiscount(UpdateDisountRequest) returns (CouponModel);
 	rpc DeleteDiscount(DeleteDisountRequest) returns (DeleteDiscountResponse);
 }
 
