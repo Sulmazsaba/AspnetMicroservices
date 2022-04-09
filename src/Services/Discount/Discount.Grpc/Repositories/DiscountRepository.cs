@@ -4,7 +4,7 @@ using Discount.Grpc.Entities;
 using Discount.Grpc.Repositories;
 using Npgsql;
 
-namespace Discount.API.Repositories
+namespace Discount.Grpc.Repositories
 {
     public class DiscountRepository : IDiscountRepository
     {
