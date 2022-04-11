@@ -1,6 +1,7 @@
 using Basket.API.Repositories;
 using Basket.API.Services;
 using Discount.Grpc.Protos;
+using MassTransit;
 using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,6 +18,15 @@ builder.Services.AddGrpcClient<DiscountProtoService.DiscountProtoServiceClient>(
 });
 
 builder.Services.AddScoped<DiscountGrpcService>();
+builder.Services.AddMassTransit(config =>
+{
+    config.UsingRabbitMq((ctx, cfg) =>
+    {
+        cfg.Host(builder.Configuration.GetValue<string>("ServiceBusSettings:HostAddress"));
+    });
+});
+
+builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddControllers();
 
 // Add services to the container.

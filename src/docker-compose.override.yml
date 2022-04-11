@@ -8,13 +8,13 @@ services:
     ports:
       - "27017:27017"
     volumes:
-     - mongo_data:/data/db
+      - mongo_data:/data/db
 
   basketdb :
     container_name: basketdb
     restart: always
     ports:
-     - "6379:6379"
+      - "6379:6379"
 
   discountdb:
     container_name: discountdb
@@ -24,7 +24,7 @@ services:
       - POSTGRES_DB=DiscountDb
     restart: always
     ports:
-        - "5432:5432"
+      - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data/
 
