@@ -31,6 +31,8 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddAutoMapper(typeof(Program));
+builder.Services.AddScoped<BasketCheckoutConsumer>();
 
 var app = builder.Build();
 
@@ -45,9 +47,9 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.MigrateDatabase<OrderContext>((context, services) =>
-{
-    var logger = services.GetService<ILogger<OrderContextSeed>>();
-    OrderContextSeed.SeedAsync(context, logger).Wait();
-});
+//app.MigrateDatabase<OrderContext>((context, services) =>
+//{
+//    var logger = services.GetService<ILogger<OrderContextSeed>>();
+//    OrderContextSeed.SeedAsync(context, logger).Wait();
+//});
 app.Run();
